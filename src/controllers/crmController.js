@@ -38,13 +38,25 @@ export const getContactWithID = (req, res) =>{
 
 export const updateContact = (req, res) =>{
 
-    Contact.findOneAndUpdate({_id: req.params.contactId}, req.body, {new: true}, (err, contacts) => {
+    Contact.findOneAndUpdate({_id: req.params.contactId}, req.body, {new: true}, (err, contact) => {
 
         if(err){
             res.send(err);
         }
 
-        res.json(contacts);
+        res.json(contact);
     })
 
+}
+
+export const deleteContact = (req, res)=>{
+    Contact.remove({_id: req.params.contactId}, (err, contact) =>{
+
+        if(err){
+            res.send(err);
+        }
+
+        res.json({ message: 'Succesfully deleted contact'});
+
+    })
 }
