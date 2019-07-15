@@ -1,8 +1,17 @@
 const routes = (app) =>{
 
     app.route('/contact')
-    .get((req,res)=>
-    res.send('GET request succesfull!!'))
+    .get((req,res, next)=>{
+
+        //middleware
+        console.log(`Request from: ${req.originalUrl}`)
+        console.log(`Request from: ${req.method}`)
+        next();
+    }, (req, res, next)=>{
+
+        res.send('GET request succesfull!!');
+    })
+   
 
     .post((req,res)=>
     res.send('POST request succesfull!!'));
