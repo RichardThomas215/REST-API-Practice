@@ -1,3 +1,5 @@
+import { addNewContact } from "../controllers/crmController";
+
 const routes = (app) =>{
 
     app.route('/contact')
@@ -12,9 +14,8 @@ const routes = (app) =>{
         res.send('GET request succesfull!!');
     })
    
-
-    .post((req,res)=>
-    res.send('POST request succesfull!!'));
+    // POST endpoint
+    .post(addNewContact);
 
 
     app.route('/contact/:contactId')
